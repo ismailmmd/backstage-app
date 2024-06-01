@@ -22,6 +22,30 @@ export async function createRouter(
     response.json({ status: 'ok' });
   });
 
+  router.get('/notifications', (_, res) => {
+    const data = options.helloWorldModel.selectAll();
+    res.json(data);
+  });
+
+  router.post('/notifications', async (req, res) => {
+    const { key, value } = req.body;
+    const data = await options.helloWorldModel.insert(key, value);
+    res.json(data);
+  });
+
+  router.delete('/notifications/:key', async (req, res) => {
+    const { key } = req.params;
+    await options.helloWorldModel.delete(key);
+    res.status(204).end();
+  });
+
+  router.put('/notifications/:key', async (req, res) => {
+    const { key } = req.params;
+    const { value } = req.body;
+    await options.helloWorldModel.update(key, value);
+    res.status(204).end();
+  });
+
   router.use(errorHandler());
   return router;
 }

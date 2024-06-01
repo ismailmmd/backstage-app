@@ -38,4 +38,7 @@ backend.add(import('@backstage/plugin-search-backend/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 
+// hello-world plugin
+backend.add(import('@internal/backstage-plugin-hello-world-backend'));
+
 backend.start();

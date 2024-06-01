@@ -3,8 +3,8 @@
  * @returns { Promise<void> }
  */
 exports.up = async (knex) => {
-    await knex.schema.createTable('user_settings', table => {
-        table.comment('The table of user related settings');
+    await knex.schema.createTable('key_value', table => {
+        table.comment('The table of keys and values');
 
         table.string('key').notNullable().comment('Key of a bucket value');
         table.text('value').notNullable().comment('The value');
@@ -18,5 +18,5 @@ exports.up = async (knex) => {
  * @returns { Promise<void> }
  */
 exports.down = async (knex) => {
-    await knex.schema.dropTable('user_settings');
+    await knex.schema.dropTable('key_value');
 };
